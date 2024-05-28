@@ -12,6 +12,15 @@
   background: none
   @include flex-display(center,center,row)
 
+@mixin base-button()
+  padding: .5rem 1.5rem
+  border: none
+  border-radius: 20px
+  color: $neutral-White
+  background: linear-gradient(90deg, $primary-green 0%, $primary-cyan 100%)
+  font-size: .625rem
+  font-weight: $strong-weight
+
 *
   font-size: $size
   font-family: $font , sans-serif
@@ -33,3 +42,37 @@
     @include transparentButton()
     ion-icon
       font-size: 1.5625rem
+.main
+  @include flex-display(normal,center,column)
+  .presentation
+    overflow: hidden
+    position: relative
+    padding: 1rem 1rem 5rem 1rem
+    width: 100%
+    @include flex-display(normal,center,column)
+    .presentation__background
+      width: 100%
+      background: url("./assets/bg-intro-mobile.svg")
+      position: absolute
+      top: 0
+      background-repeat: no-repeat
+      background-position: center
+      background-size: cover
+      .presentation__image
+        width: 100%
+        transform: translateY(-115px)
+    .presentation__info-container
+      margin-top: 16rem
+      @include flex-display(normal,center,column )
+      text-align: center
+      gap: 1rem
+      .presentation__info-title
+        color: $primary-blue
+        margin: 2rem 0rem 0rem 0rem
+      .presentation__info-description
+        color: $neutral-GrayishBlue
+        font-size: .6875rem
+        line-height: 1.25rem
+        margin: 0
+      .presentation__button
+        @include base-button()
