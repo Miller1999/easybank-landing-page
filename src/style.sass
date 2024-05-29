@@ -139,3 +139,30 @@
           .article__item-description
             font-size: .75rem
             color: $neutral-GrayishBlue
+.footer
+  @include flex-display(normal,center,column)
+  padding: 2rem
+  gap: 2rem
+  background: $primary-blue
+  .social__container
+    @include flex-display(center,center,row )
+    gap: .625rem
+    .social__button
+      @include transparentButton()
+      ion-icon
+        color: $neutral-White
+  .footer__links
+    @include flex-display(normal,center,column)
+    margin: 0
+    padding: 0
+    gap: 1rem
+    .links__item
+      list-style: none
+      color: $neutral-VeryLightGray
+      font-size: .75rem
+      font-weight: $light-weight
+  .footer__button
+    @include base-button()
+  .footer__copyright
+    color: $neutral-GrayishBlue
+    font-size: .75rem

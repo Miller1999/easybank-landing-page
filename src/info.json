@@ -1,0 +1,24 @@
+{
+	"socialMedia": [
+		{
+			"name": "facebook",
+			"text": "<ion-icon name='logo-facebook' size='large'></ion-icon>"
+		},
+		{
+			"name": "youtube",
+			"text": "<ion-icon name='logo-youtube' size='large'></ion-icon>"
+		},
+		{
+			"name": "twitter",
+			"text": "<ion-icon name='logo-twitter' size='large'></ion-icon>"
+		},
+		{
+			"name": "pinterest",
+			"text": "<ion-icon name='logo-pinterest' size='large'></ion-icon>"
+		},
+		{
+			"name": "instagram",
+			"text": "<ion-icon name='logo-instagram' size='large'></ion-icon>"
+		}
+	]
+}
