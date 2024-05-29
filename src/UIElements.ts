@@ -4,6 +4,10 @@ import api from "./assets/icon-api.svg";
 import budgeting from "./assets/icon-budgeting.svg";
 import onboarding from "./assets/icon-onboarding.svg";
 import online from "./assets/icon-online.svg";
+import money from "./assets/image-currency.jpg";
+import restaurant from "./assets/image-restaurant.jpg";
+import plane from "./assets/image-plane.jpg";
+import confetti from "./assets/image-confetti.jpg";
 
 const featuresItems = [
 	{
@@ -29,6 +33,37 @@ const featuresItems = [
 		title: "Open API",
 		description:
 			"Manage your savings, investments, pension, and much more from one account. Tracking your money has never been easier.",
+	},
+];
+
+const articlesItems = [
+	{
+		author: "Claire Robinson",
+		image: money,
+		title: "Receive money in any currency with no fees",
+		description:
+			"The world is getting smaller and we’re becoming more mobile. So why should you be forced to only receive money in a single …",
+	},
+	{
+		author: "Wilson Hutton",
+		image: restaurant,
+		title: "Treat yourself without worrying about money",
+		description:
+			"Our simple budgeting feature allows you to separate out your spending and set realistic limits each month. That means you …",
+	},
+	{
+		author: "Wilson Hutton",
+		image: plane,
+		title: "Take your Easybank card wherever you go",
+		description:
+			"We want you to enjoy your travels. This is why we don’t charge any fees on purchases while you’re abroad. We’ll even show you …",
+	},
+	{
+		author: "Claire Robinson",
+		image: confetti,
+		title: "Our invite-only Beta accounts are now live!",
+		description:
+			"After a lot of hard work by the whole team, we’re excited to launch our closed beta. It’s easy to request an invite through the site ...",
 	},
 ];
 
@@ -86,6 +121,36 @@ const createCard = (
 	const cardDescription = createElement("p", "card__description", description);
 	card.append(cardIcon, cardTitle, cardDescription);
 	return card;
+};
+
+const createArticle = (
+	image: string,
+	author: string,
+	title: string,
+	description: string
+): HTMLElement => {
+	const article = createElement("article", "article__item");
+	const articleImage = createElement("img", "article__item-image", "", {
+		src: image,
+	});
+	const articleAuthor = createElement(
+		"span",
+		"article__item-author",
+		`By ${author}`
+	);
+	const articleTitle = createElement("h3", "article__item-title", title);
+	const articleDescription = createElement(
+		"p",
+		"article__item-description",
+		description
+	);
+	const articleInfo = createDiv("article__info", [
+		articleAuthor,
+		articleTitle,
+		articleDescription,
+	]);
+	article.append(articleImage, articleInfo);
+	return article;
 };
 
 const createHeader = (): HTMLElement => {
@@ -153,7 +218,24 @@ const createMain = (): HTMLElement => {
 
 	const featuresContainer = createDiv("features__container", featuresElements);
 	const features = createSection("features", [featuresInfo, featuresContainer]);
-	main.append(presentation, features);
+	const articlesTitle = createElement(
+		"h2",
+		"articles__title",
+		"Latest Articles"
+	);
+	const articlesElements: HTMLElement[] = [];
+	articlesItems.forEach((article) => {
+		const newArticle = createArticle(
+			article.image,
+			article.author,
+			article.title,
+			article.description
+		);
+		articlesElements.push(newArticle);
+	});
+	const articleContainer = createDiv("articles__container", articlesElements);
+	const articles = createSection("articles", [articlesTitle, articleContainer]);
+	main.append(presentation, features, articles);
 	return main;
 };
 

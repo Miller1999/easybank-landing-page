@@ -108,3 +108,34 @@
           color: $neutral-GrayishBlue
           font-size: .75rem
           line-height: 1.25rem
+  .articles
+    @include flex-display(normal,center,column)
+    padding: 5rem 1rem
+    background: $neutral-VeryLightGray
+    .articles__title
+      font-size: 1.5rem
+      color: $primary-blue
+    .articles__container
+      @include flex-display(normal,center,column)
+      width: 100%
+      padding: 2rem 0rem
+      gap: 1rem
+      .article__item
+        width: 100%
+        border-radius: 10px
+        @include flex-display(normal,flex-start,column )
+        background: $neutral-White
+        .article__item-image
+          width: 100%
+          border-radius: 10px 10px 0px 0px
+        .article__info
+          padding: 1rem
+          .article__item-author
+            color: $neutral-GrayishBlue
+            font-size: .625rem
+          .article__item-title
+            font-size: .9375rem
+            color: $primary-blue
+          .article__item-description
+            font-size: .75rem
+            color: $neutral-GrayishBlue
