@@ -181,6 +181,11 @@ const createList = (
 	return list;
 };
 
+const createBackdrop = (): HTMLElement => {
+	const backdrop = createDiv("backdrop hidden-menu");
+	return backdrop;
+};
+
 const createHeader = (): HTMLElement => {
 	const header = createElement("header", "header");
 	const headerImg = createElement("img", "header__image", "", { src: Logo });
@@ -190,6 +195,23 @@ const createHeader = (): HTMLElement => {
 	);
 	header.append(headerImg, hamburguerButton);
 	return header;
+};
+
+const createMenu = (): HTMLElement => {
+	const menu = createElement("aside", "menu hidden-menu");
+	const closeButton = createButton(
+		"menu__close",
+		`<ion-icon name="close-outline"></ion-icon>`
+	);
+	const list = createList("menu__list", "menu__item", [
+		"Home",
+		"About",
+		"Contact",
+		"Blog",
+		"Careers",
+	]);
+	menu.append(closeButton, list);
+	return menu;
 };
 
 const createMain = (): HTMLElement => {
@@ -219,7 +241,6 @@ const createMain = (): HTMLElement => {
 		presentationDescription,
 		presentationButton,
 	]);
-
 	const presentation = createSection("presentation", [
 		backgroundPresentation,
 		presentationInfo,
@@ -303,4 +324,4 @@ const createFooter = (): HTMLElement => {
 	return footer;
 };
 
-export { createHeader, createMain, createFooter };
+export { createHeader, createBackdrop, createMenu, createMain, createFooter };
