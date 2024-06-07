@@ -17,6 +17,10 @@ const menu = createMenu();
 const main = createMain();
 const footer = createFooter();
 
-app?.append(backdrop, header, menu, main, footer);
+if (window.innerWidth < 1280) {
+	app?.append(backdrop, header, menu, main, footer);
+} else {
+	app?.append(header, main, footer);
+}
 
 init();

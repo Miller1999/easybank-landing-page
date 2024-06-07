@@ -10,7 +10,9 @@ const init = () => {
 		backdrop?.classList.toggle("hidden-menu");
 		hamburguer?.classList.toggle("hidden");
 	};
-
+	if (window.innerWidth >= 1280) {
+		menu?.classList.remove("hidden-menu");
+	}
 	hamburguer?.addEventListener("click", handleMenu);
 	close?.addEventListener("click", handleMenu);
 	console.log(hamburguer, menu, close);

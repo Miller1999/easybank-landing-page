@@ -16,3 +16,11 @@ $light-weight: 300
 $normal-weight: 400
 $strong-weight: 700
 $font: "Public Sans"
+
+// Queries
+
+$desktop-size: 1280px
+
+@mixin desktop
+  @media ( min-width:$desktop-size)
+    @content

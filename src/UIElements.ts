@@ -186,17 +186,6 @@ const createBackdrop = (): HTMLElement => {
 	return backdrop;
 };
 
-const createHeader = (): HTMLElement => {
-	const header = createElement("header", "header");
-	const headerImg = createElement("img", "header__image", "", { src: Logo });
-	const hamburguerButton = createButton(
-		"header__hamburguer",
-		`<ion-icon name="menu"></ion-icon>`
-	);
-	header.append(headerImg, hamburguerButton);
-	return header;
-};
-
 const createMenu = (): HTMLElement => {
 	const menu = createElement("aside", "menu hidden-menu");
 	const closeButton = createButton(
@@ -204,14 +193,34 @@ const createMenu = (): HTMLElement => {
 		`<ion-icon name="close-outline"></ion-icon>`
 	);
 	const list = createList("menu__list", "menu__item", [
-		"Home",
-		"About",
-		"Contact",
-		"Blog",
-		"Careers",
+		"Home <div class='border'></div>",
+		"About <div class='border'></div>",
+		"Contact <div class='border'></div>",
+		"Blog <div class='border'></div>",
+		"Careers <div class='border'></div>",
 	]);
 	menu.append(closeButton, list);
 	return menu;
+};
+
+const createHeader = (): HTMLElement => {
+	const header = createElement("header", "header");
+	const headerImg = createElement("img", "header__image", "", { src: Logo });
+	const hamburguerButton = createButton(
+		"header__hamburguer",
+		`<ion-icon name="menu"></ion-icon>`
+	);
+	const desktopButton = createButton(
+		"header__button-desktop",
+		"Request Invite"
+	);
+	const menu = createMenu();
+	if (window.innerWidth < 1280) {
+		header.append(headerImg, hamburguerButton);
+	} else {
+		header.append(headerImg, menu, desktopButton);
+	}
+	return header;
 };
 
 const createMain = (): HTMLElement => {
@@ -308,19 +317,41 @@ const createFooter = (): HTMLElement => {
 		"Support",
 		"Privacy Policy",
 	]);
+	const leftList = createList("footer__links-left", "links__item", [
+		"About Us",
+		"Contact",
+		"Blog",
+	]);
+	const rightList = createList("footer__links-right", "links__item", [
+		"Careers",
+		"Support",
+		"Privacy Policy",
+	]);
 	const footerButton = createButton("footer__button", "Request Invite");
 	const copyrightFooter = createElement(
 		"span",
 		"footer__copyright",
 		"© Easybank. All Rights Reserved"
 	);
-	footer.append(
-		logoFooter,
-		socialMediaContainer,
-		links,
-		footerButton,
-		copyrightFooter
-	);
+	if (window.innerWidth < 1280) {
+		footer.append(
+			logoFooter,
+			socialMediaContainer,
+			links,
+			footerButton,
+			copyrightFooter
+		);
+	} else {
+		footer.append(
+			logoFooter,
+			socialMediaContainer,
+			leftList,
+			rightList,
+			footerButton,
+			copyrightFooter
+		);
+	}
+
 	return footer;
 };
 
